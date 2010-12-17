@@ -1,34 +1,20 @@
 (ns euler5.core)
 
-(defn prime-factors [n]
-	(def remainder n)
-	(def factors [])
-	(defn internal [candidate]
-		(def remainder (/ n candidate))
-		(vec [candidate]))
-	(if (= n 1)
-		[]
-		(for [candidate (range 2 (+ n 1))]
-			(if (= 0 (rem remainder candidate))
-				(vec (conj (internal candidate) (prime-factors (/ n candidate))))
-				nil))))
-;;	return [] if n == 1
-;;  (2..n).each do |candidate|
-;;    if n % candidate == 0
-;;      return [candidate] + prime_factors(n/candidate)
-;;    end
-;;  end
-  
-;;(defn prime-factors 
-;;  ([n]
-;;    (prime-factors [] n 2))
-;;  ([factors n candidate]
-;;    (cond
-;;      (= n 1) factors
-;;      (= 0 (rem n candidate)) (recur (conj factors candidate) (quot n candidate) candidate)
-;;      (> candidate (Math/sqrt n)) (conj factors n)
-;;      :else (recur factors n (inc candidate))
-;;      )
-;;    )
-;;  )
+(defn divide-if-able [num den]
+	(if (= 0 (rem num den))
+		(/ num den)
+		num))
 
+(defn divide-out [composite-numbers factor]
+	(remove #(= 1 %) (map #(divide-if-able % factor) composite-numbers)))
+	
+(defn common [composite-numbers factors]
+	(if (= (count composite-numbers) 0)
+		(sort factors)
+		(common (divide-out composite-numbers (first composite-numbers)) (conj factors (first composite-numbers)))))
+
+(defn common-factors [composite-numbers]
+	(common composite-numbers []))
+	
+(defn euler5 [n]
+	(reduce #(* %1 %2) (common-factors (range 1 (+ n 1)))))
