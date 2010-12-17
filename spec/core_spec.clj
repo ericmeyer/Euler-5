@@ -26,6 +26,8 @@
 		(should= [2 2 3] (common-factors [2 3 4])))
 	(it "has common factors for 2-5"
 		(should= [2 2 3 5] (common-factors [2 3 4 5])))
+	(it "handles out of order"
+		(should= [2 2 3 5] (common-factors [5 3 4 2])))
 	(it "has common factors for 2-10"
 		(should= [2 2 2 3 3 5 7] (common-factors [2 3 4 5 6 7 8 9 10])))
 )

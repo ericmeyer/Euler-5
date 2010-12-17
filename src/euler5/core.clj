@@ -14,7 +14,7 @@
 		(common (divide-out composite-numbers (first composite-numbers)) (conj factors (first composite-numbers)))))
 
 (defn common-factors [composite-numbers]
-	(common composite-numbers []))
+	(common (sort composite-numbers) []))
 	
 (defn euler5 [n]
 	(reduce #(* %1 %2) (common-factors (range 1 (+ n 1)))))
