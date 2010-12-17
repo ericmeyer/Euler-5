@@ -17,3 +17,6 @@
 	
 (defn euler5 [n]
 	(reduce #(* %1 %2) (common-factors (range 1 (+ n 1)))))
+	
+(defn -main [& args]
+	(euler5 20))
