@@ -1,4 +1,4 @@
-(defproject euler5 "1.0.0-SNAPSHOT"
+(defproject euler5 "1.0.0"
   :description "Smallest number divisible by 1 through 20"
   :dependencies [[org.clojure/clojure "1.2.0"]
                  [org.clojure/clojure-contrib "1.2.0"]]
