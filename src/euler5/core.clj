@@ -8,12 +8,11 @@
 (defn divide-out [composite-numbers factor]
 	(remove #(= 1 %) (map #(divide-if-able % factor) composite-numbers)))
 	
-(defn common [composite-numbers factors]
-	(if (= (count composite-numbers) 0)
-		(sort factors)
-		(common (divide-out composite-numbers (first composite-numbers)) (conj factors (first composite-numbers)))))
-
 (defn common-factors [composite-numbers]
+	(defn common [composite-numbers factors]
+		(if (= (count composite-numbers) 0)
+			(sort factors)
+			(common (divide-out composite-numbers (first composite-numbers)) (conj factors (first composite-numbers)))))
 	(common (sort composite-numbers) []))
 	
 (defn euler5 [n]
