@@ -8,6 +8,8 @@
 		(should= 4 (divide-if-able 8 2)))
 	(it "returns 9"
 		(should= 9 (divide-if-able 9 2)))
+	(it "divides 9 by 3"
+		(should= 3 (divide-if-able 9 3)))
 )
 
 (describe "divide-out"
